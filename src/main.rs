@@ -1,24 +1,15 @@
-use yew::prelude::*;
+mod card;
+mod app;
 
-#[function_component]
-fn App() -> Html {
-    let counter = use_state(|| 0);
-    let onclick = {
-        let counter = counter.clone();
-        move |_| {
-            let value = *counter + 1;
-            counter.set(value);
-        }
-    };
+use struct_to_json_db::set_struct_json_path;
 
-    html! {
-        <div>
-            <button {onclick}>{ "+1" }</button>
-            <p>{ *counter }</p>
-        </div>
-    }
-}
 
-fn main() {
-    yew::Renderer::<App>::new().render();
+fn main() -> Result<(),Box<dyn std::error::Error>>{
+    color_eyre::install()?;
+
+    set_struct_json_path("./db/");
+
+    yew::Renderer::<app::App>::new().render();
+
+    Ok(())
 }
