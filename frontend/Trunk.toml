@@ -84,6 +84,11 @@ tailwindcss = "4.1.10"
 # Hooks are optional, and default to `None`.
 # Hooks are executed as part of Trunk's main build pipeline, no matter how it is run.
 
+[[hooks]]
+stage = "pre_build"
+command = "sh"
+command_arguments = ["./setup/init-db.sh"]
+
 
 
 [[hooks]]
@@ -95,6 +100,7 @@ stage = "build"
 command = "sh"
 command_arguments = ["-c", "npx @tailwindcss/cli -i ./public/styles/style.css -o $TRUNK_STAGING_DIR/app.css"]
 
+
 [hooks.windows]
 # This shows how to create OS-specific overrides for hooks.
 # This will override the hook directly above it.
@@ -102,4 +108,9 @@ command_arguments = ["-c", "npx @tailwindcss/cli -i ./public/styles/style.css -o
 # Valid values are `windows`, `macos`, and `linux`.
 command = "cmd"
 command_arguments = ["/c", "npx @tailwindcss/cli -i ./public/styles/style.css -o %TRUNK_STAGING_DIR%/app.css"]
+
+[[hooks]]
+stage = "build"
+command = "sh"
+command_arguments = ["-c", "cp -a  ./tmp/flesh-and-blood-cards/json $TRUNK_STAGING_DIR/json"]
 

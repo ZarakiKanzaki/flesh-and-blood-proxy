@@ -1,5 +1,7 @@
 use yew::prelude::*;
 
+
+
 #[function_component]
 pub fn App() -> Html {
     let counter = use_state(|| 0);
@@ -10,6 +12,7 @@ pub fn App() -> Html {
             counter.set(value);
         }
     };
+
 
     html! {
         <div>
