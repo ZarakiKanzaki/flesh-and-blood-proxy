@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/ZarakiKanzaki/flesh-and-blood-proxy#readme",
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.10",
-    "tailwindcss": "^4.1.10"
+    "@tailwindcss/cli": "^4.1.11",
+    "tailwindcss": "^4.1.11"
   }
 }

@@ -1,3 +1,5 @@
+use poem::middleware::Cors;
+use poem::EndpointExt;
 use poem::{listener::TcpListener,  Route, Server};
 use poem_openapi::param::Query;
 use poem_openapi::{payload::Json,  OpenApi, OpenApiService};
@@ -43,7 +45,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>>  {
     let api_service =
         OpenApiService::new(Api{cards}, "Search cards", "1.0").server("http://localhost:3000");
     let ui = api_service.swagger_ui();
-    let app = Route::new().nest("/", api_service).nest("/docs", ui);
+    let app = Route::new().nest("/", api_service).nest("/docs", ui).with(Cors::new().allow_origin("http://localhost:8080"));
 
     let _ = Server::new(TcpListener::bind("127.0.0.1:3000"))
         .run(app)
