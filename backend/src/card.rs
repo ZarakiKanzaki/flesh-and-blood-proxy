@@ -1,10 +1,11 @@
+
 use serde::{Deserialize, Serialize};
+use poem_openapi::Object;
 
-
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, Object)]
 pub struct Card {
     pub unique_id: String,
-    pub name: Option<String>,
+    pub name: String,
     pub pitch: Option<String>,
     pub cost: Option<String>,
     pub power: Option<String>,
@@ -33,10 +34,10 @@ pub struct Card {
     pub interacts_with_keywords: Option<Vec<String>>,
 
     #[serde(rename = "functional_text")]
-    pub functional_text: Option<String>,
+    pub functional_text: String,
 
     #[serde(rename = "functional_text_plain")]
-    pub functional_text_plain: Option<String>,
+    pub functional_text_plain: String,
 
     #[serde(rename = "type_text")]
     pub type_text: Option<String>,
@@ -92,7 +93,7 @@ pub struct Card {
     pub printings: Option<Vec<Printing>>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, Object)]
 
 pub struct Printing {
     pub unique_id: String,

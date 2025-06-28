@@ -12,4 +12,5 @@ cd  ./tmp/flesh-and-blood-cards;
 updated_branch=`echo "$(git branch -r --sort=-committerdate)" | head -1`
 updated_branch=""$(printf "%s" "$updated_branch" | cut -d/ -f2-)"" 
 
-git checkout $updated_branch
+git checkout $updated_branchgit
+cp -r ./json ../../db/;
