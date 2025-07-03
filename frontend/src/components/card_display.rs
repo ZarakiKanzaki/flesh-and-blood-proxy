@@ -5,7 +5,6 @@ use yew_markdown::Markdown;
 use crate::dto::card::Card;
 
 
-
 #[derive(PartialEq, Properties)]
 pub struct CardProperties {
     pub cards: Vec<Card>

@@ -19,6 +19,7 @@ pub fn CardSearch() -> Html {
             let query = input.value();
             let results = results.clone();
             if query.len() <= 2 {
+                results.set(vec![]);
                 return ();
             }
             spawn_local(async move {
