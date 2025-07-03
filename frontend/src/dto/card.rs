@@ -1,6 +1,5 @@
 use serde::Deserialize;
 
-
 #[derive(Clone, Deserialize, Debug, PartialEq)]
 pub struct Card {
     pub unique_id: String,
