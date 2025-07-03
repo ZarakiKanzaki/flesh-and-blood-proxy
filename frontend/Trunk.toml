@@ -84,12 +84,17 @@ tailwindcss = "4.1.10"
 [[hooks]]
 stage = "build"
 command = "sh"
-command_arguments = ["-c", "npx @tailwindcss/cli -i ./styles/style.css -o $TRUNK_STAGING_DIR/app.css"]
+command_arguments = ["-c", "npx @tailwindcss/cli -i ./public/styles/style.css -o $TRUNK_STAGING_DIR/app.css"]
 
 
 
 [hooks.windows]
 command = "cmd"
-command_arguments = ["/c", "npx @tailwindcss/cli -i ./styles/style.css -o %TRUNK_STAGING_DIR%/app.css"]
+command_arguments = ["/c", "npx @tailwindcss/cli -i ./public/styles/style.css -o %TRUNK_STAGING_DIR%/app.css"]
 
+
+[[hooks]]
+stage = "build"
+command = "sh"
+command_arguments = ["-c", "cp -r ./public/images $TRUNK_STAGING_DIR/images"]
 

@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+
+.input-search {
+  @apply w-full border-black border-2 p-2.5 focus:outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:bg-[#FFA6F6] active:shadow-[2px_2px_0px_rgba(0,0,0,1)];
+}
+
+.card-stats {
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  height: 40px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fab-stat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-stats-img { height: 2em; width: 2em; }
+.card-stats-img-small { height: 1em; width: 1em; }
+
+.fab-icon {
+    width: 1em; 
+    height: 1em; 
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.fab-icon.resource {
+
+    background-image: url('images/resource.svg');
+
+}
+
+.fab-icon.chi {
+    background-image: url('images/chi.svg');
+}
+
+.fab-icon.power {
+    background-image: url('images/power.svg');
+}
+
+.fab-icon.defense {
+    background-image: url('images/defense.svg');
+}
+
+.fab-icon.intelligence {
+    background-image: url('images/intelligence.svg');
+}
+
+.fab-icon.health {
+    background-image: url('images/health.svg');
+}
+
+.fab-icon.tap {
+    background-image: url('images/tap.svg');
+}
+
+.fab-icon.untap {
+    background-image: url('images/untap.svg');
+}

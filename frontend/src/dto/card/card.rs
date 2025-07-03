@@ -1,5 +1,7 @@
+use serde::Deserialize;
 
 
+#[derive(Clone, Deserialize, Debug, PartialEq)]
 pub struct Card {
     pub unique_id: String,
     pub name: Option<String>,
@@ -65,7 +67,7 @@ pub struct Card {
     pub printings: Option<Vec<Printing>>,
 }
 
-
+#[derive(Clone, Deserialize, Debug, PartialEq)]
 pub struct Printing {
     pub unique_id: String,
     pub set_printing_unique_id: Option<String>,
