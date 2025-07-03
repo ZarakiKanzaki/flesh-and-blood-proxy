@@ -20,17 +20,20 @@ impl Api {
     #[oai(path = "/search", method = "get")]
     async fn seach(&self, #[oai(name = "query")] query: Query<String>)-> Json<Vec<card::Card>> {
         let matcher = SkimMatcherV2::default();
-        let results: Vec<card::Card> = self
-            .cards
-            .iter()
-            .filter_map(|card| {
-                matcher
-                    .fuzzy_match(&card.name, &query)
-                    .map(|_| card.clone())
-            })
-            .collect();
+        let mut results: Vec<(card::Card, i64)> = self
+                .cards
+                .iter()
+                .filter_map(|card| {
+                    // Perform fuzzy match
+                    matcher.fuzzy_match(&card.name, &query).map(|rank| (card.clone(), rank))
+                })
+                .collect();
 
-        Json(results)
+         results.sort_by(|(_, rank1), (_, rank2)| rank2.cmp(rank1));
+
+        let sorted_cards: Vec<card::Card> = results.into_iter().map(|(card, _)| card).collect();
+
+        Json(sorted_cards)
     }
 }
 
